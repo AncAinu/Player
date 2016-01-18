@@ -320,7 +320,9 @@ public class Player: UIViewController {
         }
 
 		dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0)) { () -> Void in
-			self.player.replaceCurrentItemWithPlayerItem(self.playerItem)
+			if self.player != nil && self.playerItem != nil {
+				self.player.replaceCurrentItemWithPlayerItem(self.playerItem)
+			}
 		}
 
         if self.playbackLoops.boolValue == true {
