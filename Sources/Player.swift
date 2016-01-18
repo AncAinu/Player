@@ -319,7 +319,7 @@ public class Player: UIViewController {
             NSNotificationCenter.defaultCenter().addObserver(self, selector: "playerItemFailedToPlayToEndTime:", name: AVPlayerItemFailedToPlayToEndTimeNotification, object: self.playerItem)
         }
 
-		dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0)) { () -> Void in
+		dispatch_sync(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0)) { () -> Void in
 			if self.player != nil && self.playerItem != nil {
 				self.player.replaceCurrentItemWithPlayerItem(self.playerItem)
 			}
